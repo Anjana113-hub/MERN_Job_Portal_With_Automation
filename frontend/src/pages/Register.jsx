@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useContext, useState } from "react";
+import { AuthContext } from "../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
-import { clearAllUserErrors, register } from "../store/slices/userSlice";
 import { toast } from "react-toastify";
 import { FaAddressBook, FaPencilAlt, FaRegUser } from "react-icons/fa";
 import { FaPhoneFlip } from "react-icons/fa6";
@@ -25,6 +24,7 @@ const Register = () => {
     "Software Development",
     "Web Development",
     "Cybersecurity",
+    "MERN Stack Development",
     "Data Science",
     "Artificial Intelligence",
     "Cloud Computing",
@@ -49,41 +49,42 @@ const Register = () => {
     setResume(file);
   };
 
-  const { loading, isAuthenticated, error, message } = useSelector(
-    (state) => state.user
-  );
-
-  const dispatch = useDispatch();
+  const { register, loading, isAuthenticated } = useContext(AuthContext);
   const navigateTo = useNavigate();
 
-  const handleRegsiter = (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("role", role);
-    formData.append("name", name);
-    formData.append("email", email);
-    formData.append("phone", phone);
-    formData.append("address", address);
-    formData.append("password", password);
-    if (role === "Job Seeker") {
-      formData.append("firstNiche", firstNiche);
-      formData.append("secondNiche", secondNiche);
-      formData.append("thirdNiche", thirdNiche);
-      formData.append("coverLetter", coverLetter);
+  const handleRegsiter = async (e) => {
+  e.preventDefault();
+
+  const formData = new FormData();
+
+  formData.append("role", role);
+  formData.append("name", name);
+  formData.append("email", email);
+  formData.append("phone", phone);
+  formData.append("address", address);
+  formData.append("password", password);
+
+  if (role === "Job Seeker") {
+    formData.append("firstNiche", firstNiche);
+    formData.append("secondNiche", secondNiche);
+    formData.append("thirdNiche", thirdNiche);
+    formData.append("coverLetter", coverLetter);
+
+    if (resume) {
       formData.append("resume", resume);
     }
-    dispatch(register(formData));
-  };
+  }
 
-  useEffect(() => {
-    if (error) {
-      toast.error(error);
-      dispatch(clearAllUserErrors());
-    }
-    if (isAuthenticated) {
-      navigateTo("/");
-    }
-  }, [dispatch, error, loading, isAuthenticated, message]);
+  try {
+    await register(formData);
+    toast.success("Registration successful!");
+    navigateTo("/");
+  } catch (error) {
+    toast.error(
+      error.response?.data?.message || "Registration failed"
+    );
+  }
+};
 
   return (
     <>

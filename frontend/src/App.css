@@ -1413,3 +1413,749 @@ button:disabled:hover {
   cursor: not-allowed;
   color: #111;
 }
+
+
+
+/* =========================================================
+   JOB PORTAL — PROFESSIONAL BLUE + WHITE THEME
+   Keep existing JSX class names; this section restyles them.
+   ========================================================= */
+:root {
+  --bg: #f4f7fb;
+  --surface: #ffffff;
+  --surface-2: #f0f5fc;
+  --surface-3: #e8f0fb;
+  --gold: #2563eb;
+  --gold-light: #1d4ed8;
+  --gold-dark: #93b4f5;
+  --text: #172033;
+  --muted: #64748b;
+  --border: #dbe4f0;
+  --success: #15803d;
+  --danger: #dc2626;
+  --radius: 14px;
+  --shadow: 0 10px 28px rgba(31, 55, 90, .08);
+}
+
+html { scroll-behavior: smooth; background: var(--bg); }
+body, #root { min-height: 100vh; background: var(--bg); color: var(--text); }
+* { font-family: "Poppins", sans-serif; overflow-x: visible; }
+html, body { overflow-x: hidden; }
+body { font-size: 16px; line-height: 1.6; }
+button, input, select, textarea { font: inherit; }
+button { cursor: pointer; }
+a { color: var(--gold-light); }
+input, select, textarea { color: var(--text); }
+input::placeholder, textarea::placeholder { color: #a9bad2; }
+input:focus, select:focus, textarea:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
+
+.btn, .black_btn, .outline_btn {
+  display: inline-flex; justify-content: center; align-items: center; gap: 8px;
+  min-width: 145px; max-width: 100%; padding: 11px 23px; border-radius: 9px;
+  border: 1px solid transparent; background: var(--gold); color: #ffffff;
+  font-size: 15px; font-weight: 600; text-decoration: none;
+  transition: transform .2s ease, background .2s ease, border-color .2s ease;
+}
+.btn:hover { background: var(--gold-light); color: #ffffff; transform: translateY(-2px); }
+.black_btn { background: #172b4d; color: #ffffff; border-color: var(--border); }
+.black_btn:hover { background: var(--gold); color: #ffffff; }
+.outline_btn { background: transparent; color: var(--gold-light); border-color: var(--gold-dark); }
+.outline_btn:hover { background: var(--gold); color: #ffffff; }
+button:disabled { opacity: .5; cursor: not-allowed; }
+button:disabled:hover { background: #777; color: #222; }
+
+/* Navigation */
+.navbar {
+  position: sticky; top: 0; z-index: 50; min-height: 82px; height: auto;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  padding: 12px clamp(20px, 6vw, 100px); background: rgba(255,255,255,.96);
+  border-bottom: 1px solid var(--border); backdrop-filter: blur(14px);
+}
+.navbar .logo { flex: 0 0 auto; display: flex; align-items: center; gap: 14px; }
+.navbar .logo img {
+  display: block; width: 142px; height: 80px; max-height: 80px;
+  padding: 5px 8px; object-fit: contain; object-position: center;
+  background: #ffffff; border: 1px solid #dbe4f0;
+  border-radius: 12px; box-shadow: 0 5px 16px rgba(0,0,0,.16);
+}
+.navbar .logo h4 { color: var(--gold-light); font-size: 22px; font-weight: 700; letter-spacing: 1.2px; }
+.navbar .links { display: flex; align-items: center; gap: 28px; }
+.navbar .links ul { display: flex; align-items: center; flex-wrap: wrap; gap: 26px; }
+.navbar .links ul li { list-style: none; }
+.navbar .links ul li a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; transition: color .2s; }
+.navbar .links ul li a:hover { color: var(--gold-light); }
+.navbar .links ul:last-child { gap: 10px; }
+.navbar .hamburger { display: none; color: var(--gold); cursor: pointer; }
+
+/* Home hero */
+.hero {
+  width: min(100% - 40px, 1240px); min-width: 0; max-width: 1240px;
+  min-height: 590px; margin: 0 auto; padding: 85px 20px;
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  gap: 28px; text-align: center; position: relative;
+}
+.hero::before { content: ""; position: absolute; width: 420px; height: 420px; border-radius: 50%; background: rgba(37,99,235,.08); filter: blur(70px); z-index: 0; }
+.hero > * { position: relative; z-index: 1; }
+.hero h1 { max-width: 950px; color: var(--text); font-size: clamp(36px, 5vw, 66px); line-height: 1.15; font-weight: 700; letter-spacing: -1.5px; }
+.hero h1 span { color: var(--gold); }
+.hero h4 { color: var(--muted); font-size: clamp(17px, 2vw, 22px); font-weight: 400; }
+.hero .box { max-width: 850px; padding: 28px 36px; border: 1px solid var(--gold-dark); border-radius: 18px; background: linear-gradient(135deg, #ffffff, #eef4ff); color: var(--text); font-size: 17px; line-height: 1.8; box-shadow: var(--shadow); transition: .25s; }
+.hero .box:hover { transform: translateY(-5px); border-color: var(--gold); background: var(--surface-2); color: var(--text); }
+
+/* Shared section headings and service cards */
+.services, .howItWorks { width: 100%; min-width: 0; max-width: 1240px; margin: 0 auto; padding: 76px 28px; }
+.services { display: flex; flex-direction: column; align-items: center; gap: 38px; }
+.services h3, .howItWorks h3 { color: var(--gold); font-size: clamp(25px, 3vw, 34px); font-weight: 700; text-align: center; letter-spacing: .7px; }
+.services .grid { width: 100%; display: grid; grid-template-columns: repeat(auto-fit, minmax(245px, 1fr)); gap: 22px; }
+.services .grid .card { min-height: 190px; display: flex; flex-direction: column; gap: 13px; padding: 28px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); color: var(--text); box-shadow: var(--shadow); transition: .25s; }
+.services .grid .card:hover { transform: translateY(-6px); border-color: var(--gold-dark); background: var(--surface-2); color: var(--text); }
+.services .grid .card h4 { color: var(--gold-light); font-size: 18px; font-weight: 600; }
+.services .grid .card p { color: var(--muted); font-size: 14px; }
+
+/* How it works */
+.howItWorks { max-width: none; padding: 76px max(28px, calc((100% - 1184px)/2)); background: #edf3fb; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.howItWorks h3 { margin-bottom: 8px; }
+.howItWorks .container { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 22px; }
+.howItWorks .container .card { min-height: 220px; padding: 28px; display: flex; flex-direction: column; gap: 14px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); color: var(--text); transition: .25s; }
+.howItWorks .container .card:hover { transform: translateY(-5px); background: var(--surface-2); border-color: var(--gold-dark); color: var(--text); }
+.howItWorks .container .card .icon { width: 54px; height: 54px; display: flex; align-items: center; justify-content: center; padding: 10px; border-radius: 14px; background: var(--gold); }
+.howItWorks .container .card .icon svg { color: #ffffff; font-size: 28px; }
+.howItWorks .container .card:hover .icon { background: var(--gold-light); }
+.howItWorks .container .card h4 { color: var(--gold-light); font-size: 19px; font-weight: 600; }
+.howItWorks .container .card p { color: var(--muted); font-size: 14px; }
+
+/* Authentication pages */
+.authPage { width: min(100%, 1240px); min-width: 0; max-width: 1240px; min-height: calc(100vh - 82px); margin: 0 auto; display: flex; align-items: stretch; padding: 35px 22px; gap: 35px; }
+.authPage .container { flex: 1; width: 100%; max-width: 600px; margin: auto; padding: 38px; display: flex; flex-direction: column; justify-content: center; background: var(--surface); border: 1px solid var(--border); border-radius: 20px; box-shadow: var(--shadow); }
+.authPage .login-container { max-width: 620px; }
+.authPage .container .header { display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; text-align: center; }
+.authPage .container .header h3 { color: var(--gold-light); font-size: 29px; font-weight: 700; }
+.authPage .container .header img { width: 180px; height: 90px; margin: 0 auto; object-fit: contain; }
+.authPage .container form { display: flex; flex-direction: column; gap: 17px; }
+.authPage .container form .wrapper { display: flex; gap: 16px; }
+.authPage .container form .inputTag { min-width: 0; flex: 1; display: flex; flex-direction: column; gap: 7px; color: var(--muted); font-size: 14px; }
+.authPage .container form .inputTag div { display: flex; align-items: stretch; border: 1px solid var(--border); border-radius: 9px; overflow: hidden; background: #f8fafc; }
+.authPage .container form .inputTag div input, .authPage .container form .inputTag div select, .authPage .container form .inputTag div textarea { width: 100%; min-width: 0; padding: 12px; border: 0; background: transparent; color: var(--text); font-size: 14px; }
+.authPage .container form .inputTag div select option { background: var(--surface); color: var(--text); }
+.authPage .container form .inputTag div svg { flex: 0 0 46px; width: 46px; height: auto; min-height: 46px; padding: 11px; background: var(--gold); color: #ffffff; }
+.authPage .container form button { width: 100%; margin-top: 8px; padding: 13px 18px; border: 0; border-radius: 9px; background: var(--gold); color: #ffffff; font-size: 16px; font-weight: 700; transition: .2s; }
+.authPage .container form button:hover { background: var(--gold-light); }
+.authPage .container form a { margin-top: 5px; padding: 12px; border: 1px solid var(--gold-dark); border-radius: 9px; color: var(--gold-light); text-align: center; text-decoration: none; font-size: 15px; }
+.authPage .banner { flex: 1; display: flex; justify-content: center; align-items: center; }
+.authPage .banner img { width: min(100%, 500px); height: auto; object-fit: contain; }
+
+/* Jobs listing and filters */
+.jobs { width: min(100%, 1440px); margin: 0 auto; padding: 48px clamp(18px, 5vw, 70px); min-height: 75vh; }
+.jobs .wrapper { display: flex; gap: 32px; align-items: flex-start; }
+.jobs .wrapper .filter-bar { flex: 0 0 245px; width: 245px; padding: 22px; display: flex; flex-direction: column; gap: 28px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); }
+.jobs .wrapper .filter-bar .cities { display: flex; flex-direction: column; gap: 10px; }
+.jobs .wrapper .filter-bar .cities h2 { margin-bottom: 8px; padding-bottom: 12px; border-bottom: 1px solid var(--border); color: var(--gold-light); font-size: 18px; font-weight: 600; }
+.jobs .wrapper .filter-bar .cities div { display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: 14px; }
+.jobs input[type="checkbox"], .jobs input[type="radio"] { accent-color: var(--gold); }
+.jobs .search-tab-wrapper { position: relative; display: flex; width: min(100%, 720px); margin: 0 auto 32px; }
+.jobs .search-tab-wrapper input { width: 100%; padding: 14px 135px 14px 16px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); color: var(--text); font-size: 15px; }
+.jobs .search-tab-wrapper button { position: absolute; top: 7px; right: 7px; padding: 8px 18px; border: 0; border-radius: 7px; background: var(--gold); color: #ffffff; font-size: 14px; font-weight: 600; }
+.jobs .search-tab-wrapper svg { display: none; }
+.jobs .container { width: calc(100% - 277px); min-width: 0; }
+.jobs .container .jobs_container { width: 100%; padding: 10px 0 35px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 20px; }
+.jobs .container .jobs_container .card { min-width: 0; height: fit-content; display: flex; flex-direction: column; gap: 9px; padding: 24px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); color: var(--text); text-decoration: none; box-shadow: var(--shadow); transition: .22s; }
+.jobs .container .jobs_container .card:hover { transform: translateY(-4px); border-color: var(--gold-dark); background: var(--surface-2); }
+.jobs .container .jobs_container .card .title { color: var(--gold-light); font-size: 20px; font-weight: 650; }
+.jobs .container .jobs_container .card .company, .jobs .container .jobs_container .card .location, .jobs .container .jobs_container .card .salary, .jobs .container .jobs_container .card .posted { color: var(--muted); font-size: 13px; }
+.jobs .container .jobs_container .card .salary span, .jobs .container .jobs_container .card .posted span { color: var(--text); font-size: 13px; font-weight: 600; }
+.jobs .container .jobs_container .card .hiring-multiple, .jobs .container .jobs_container .card .hiring { width: fit-content; padding: 4px 9px; border-radius: 20px; font-size: 11px; }
+.jobs .container .jobs_container .card .hiring-multiple { background: #e8f7ee; color: var(--success); }
+.jobs .container .jobs_container .card .hiring { background: #eaf2ff; color: var(--gold-light); }
+.jobs .jobs_container .card .btn-wrapper { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px; margin-top: 12px; }
+.mobile-filter { display: none; }
+.mobile-filter select { padding: 9px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); color: var(--text); }
+
+/* Account / dashboard */
+.account { width: min(100%, 1440px); margin: 0 auto; padding: 45px clamp(18px, 5vw, 70px); min-height: 75vh; }
+.account .component_header { display: flex; justify-content: space-between; align-items: center; gap: 18px; margin-bottom: 30px; }
+.account .component_header p { color: var(--text); font-weight: 500; }
+.account .component_header p:last-child span { color: var(--gold); }
+.account .container { display: flex; align-items: flex-start; gap: 30px; }
+.account .container .sidebar { flex: 0 0 250px; min-width: 0; padding: 24px 18px; display: flex; flex-direction: column; gap: 20px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); }
+.account .container .sidebar h4 { margin-bottom: 8px; color: var(--gold-light); font-size: 20px; font-weight: 650; }
+.account .container .sidebar .sidebar_links { display: flex; flex-direction: column; gap: 8px; }
+.account .container .sidebar .sidebar_links button { padding: 10px 12px; border: 0; border-radius: 8px; background: transparent; color: var(--muted); text-align: left; font-size: 14px; transition: .2s; }
+.account .container .sidebar .sidebar_links button:hover, .account .container .sidebar .sidebar_links .active { background: #eaf2ff; color: var(--gold-light); }
+.account .container .banner { width: 100%; max-width: 900px; margin: 0 auto; min-width: 0; }
+.account_components { width: 100%; min-width: 0; min-height: 400px; display: flex; flex-direction: column; gap: 24px; }
+.account_components h3 { color: var(--gold-light); font-size: 26px; font-weight: 700; }
+.account_components div:first-child { font-size: inherit; }
+.account_components img { max-width: 220px; width: 220px; height: 220px; border: 3px solid var(--gold-dark); border-radius: 50%; object-fit: cover; }
+.account_components div { position: relative; display: flex; flex-direction: column; gap: 9px; }
+.account_components div .label-infoTag-wrapper { display: flex; flex-direction: row; flex-wrap: wrap; gap: 10px; }
+.account_components div .label-infoTag-wrapper span { display: flex; align-items: center; gap: 7px; color: var(--muted); font-size: 13px; }
+.account_components div input, .account_components div select, .account_components div textarea { width: 100%; padding: 11px 13px; border: 1px solid var(--border); border-radius: 8px; background: #f8fafc; color: var(--text); font-size: 14px; }
+.account_components div select option { background: var(--surface); }
+.account_components .view-resume { width: fit-content; padding: 10px 18px; border: 1px solid var(--gold-dark); border-radius: 8px; background: var(--surface-2); color: var(--gold-light); text-decoration: none; font-size: 14px; }
+.account_components .save_change_btn_wrapper { display: flex; flex-direction: row; justify-content: flex-end; gap: 12px; }
+.save_change_btn_wrapper .btn { width: fit-content; }
+.account_components input[type="file"] { background: transparent; }
+.account_components input::file-selector-button { margin-right: 12px; padding: 8px 12px; border: 0; border-radius: 6px; background: var(--gold); color: #ffffff; }
+.eye_icon { position: absolute; right: 16px; bottom: 12px; color: var(--gold); font-size: 22px; }
+.update_password_component div input { padding-right: 55px; }
+.account_components .inbox_container .card { display: block; padding: 20px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); color: var(--text); text-decoration: none; font-size: 16px; }
+.account_components .inbox_container .card:hover { border-color: var(--gold-dark); background: var(--surface-2); }
+.account_components .applications_container { display: flex; flex-direction: column; gap: 18px; }
+.account_components .applications_container .card { margin: 0; padding: 22px; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); }
+.account_components .applications_container .card .sub-sec { display: flex; flex-direction: column; gap: 5px; color: var(--muted); font-size: 13px; }
+.account_components .applications_container .card .sub-sec span { color: var(--text); font-size: 15px; font-weight: 600; }
+.account_components .applications_container .card .sub-sec textarea { background: #f8fafc; color: var(--text); font-size: 14px; }
+.account_components .applications_container .card .btn-wrapper { display: flex; flex-direction: row; flex-wrap: wrap; justify-content: flex-end; gap: 12px; }
+.sidebar_icon { display: none; }
+
+/* Chat */
+.chatting { width: min(100% - 36px, 900px); min-width: 0; max-width: 900px; margin: 0 auto; padding: 45px 0; }
+.chatting .container { width: 100%; max-width: 760px; min-height: 560px; max-height: 650px; margin: 0 auto; position: relative; overflow: hidden; border: 1px solid var(--border); border-radius: 15px; background: var(--surface); box-shadow: var(--shadow); }
+.chatting .container .header { background: var(--surface-3); border-bottom: 1px solid var(--border); }
+.chatting .container .header span { color: var(--gold-light); font-size: 18px; font-weight: 650; }
+.chatting .container .header p { padding: 18px; }
+.chatting .container .messages { min-height: 450px; padding: 22px; display: flex; flex-direction: column; gap: 13px; }
+.chatting .container .messages .receiver, .chatting .container .messages .sender { display: flex; align-items: center; }
+.chatting .container .messages .receiver { justify-content: flex-end; margin-left: 40px; }
+.chatting .container .messages .sender { justify-content: flex-start; margin-right: 40px; }
+.chatting .container .messages .receiver span, .chatting .container .messages .sender span { width: fit-content; max-width: 85%; padding: 10px 14px; border-radius: 12px; font-size: 14px; }
+.chatting .container .messages .receiver span { background: #dbeafe; color: var(--gold-light); }
+.chatting .container .messages .sender span { background: #eaf1fb; color: var(--text); }
+.chatting .container form { position: sticky; bottom: 0; width: 100%; height: 60px; border-top: 1px solid var(--border); background: var(--surface-2); }
+.chatting .container form input { width: 100%; height: 100%; padding: 12px 60px 12px 16px; border: 0; background: transparent; color: var(--text); }
+.chatting .container form button { position: absolute; top: 10px; right: 14px; color: var(--gold); background: transparent; border: 0; font-size: 24px; }
+
+/* Application form and job details */
+.application_page { width: min(100% - 40px, 1240px); min-width: 0; max-width: 1240px; margin: 0 auto; padding: 35px 0; display: flex; align-items: flex-start; gap: 35px; }
+.application_page form, .application_page .job-details { flex: 1; min-width: 0; padding: 28px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); box-shadow: var(--shadow); }
+.application_page form { display: flex; flex-direction: column; gap: 17px; }
+.application_page form h3, .application_page .job-details h3 { margin-bottom: 12px; color: var(--gold-light); font-size: 22px; font-weight: 650; }
+.application_page form div { display: flex; flex-direction: column; gap: 7px; color: var(--muted); font-size: 14px; }
+.application_page form div input, .application_page form div textarea, .application_page form div select { width: 100%; padding: 11px 13px; border: 1px solid var(--border); border-radius: 8px; background: #f8fafc; color: var(--text); font-size: 14px; }
+.application_page .job-details { display: flex; flex-direction: column; }
+.application_page .job-details header { display: flex; flex-direction: column; gap: 8px; }
+.application_page .job-details header a, .application_page .job-details header p, .application_page .job-details section .wrapper:last-child p, .application_page .job-details section .wrapper:last-child ul li, .application_page .job-details section .wrapper:first-child div div span, .application_page .job-details section .wrapper .location-wrapper span, .application_page .job-details footer p { color: var(--muted); font-size: 14px; }
+.application_page .job-details section { display: flex; flex-direction: column; gap: 14px; }
+.application_page .job-details section .wrapper { display: flex; flex-direction: column; gap: 10px; }
+.application_page .job-details section .wrapper:first-child div { display: flex; flex-wrap: wrap; gap: 12px; }
+.application_page .job-details section .wrapper:first-child div div { display: flex; flex-direction: column; gap: 3px; }
+.application_page .job-details section .wrapper .location-wrapper { display: flex; align-items: center; gap: 7px; }
+.application_page .job-details section .wrapper:last-child h4 { margin-bottom: 8px; color: var(--gold-light); font-size: 18px; }
+.application_page .job-details footer { display: flex; flex-direction: column; gap: 10px; padding: 0; background: transparent; border: 0; }
+hr { margin: 18px 0; border: 0; border-top: 1px solid var(--border); }
+
+/* Footer */
+footer { display: flex; flex-wrap: wrap; gap: 30px; padding: 48px clamp(20px, 6vw, 90px) 30px; background: #172b4d; border-top: 1px solid var(--border); }
+footer div { flex: 1; min-width: 190px; padding-right: 10px; }
+footer div:first-child { display: flex; justify-content: center; align-items: center; }
+footer div img { width: min(200px, 100%); object-fit: contain; }
+footer div h4 { margin-bottom: 17px; color: var(--gold-light); font-size: 18px; font-weight: 700; letter-spacing: .5px; }
+footer div ul { display: flex; flex-direction: column; gap: 9px; color: var(--muted); }
+footer div ul li { overflow: visible; font-size: 14px; }
+footer div ul a { display: flex; align-items: center; gap: 9px; color: var(--muted); text-decoration: none; font-size: 14px; transition: .2s; }
+footer div ul a:hover { color: var(--gold-light); }
+footer div ul a span { display: flex; }
+.copyright { display: flex; justify-content: center; padding: 18px; background: #10213d; color: #a9bad2; text-align: center; font-size: 12px; }
+
+/* Not found */
+.notfound { min-height: 70vh; padding: 40px 20px; }
+.notfound .content { min-height: 65vh; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 25px; text-align: center; }
+.notfound .content h1 { color: var(--gold); font-size: clamp(55px, 9vw, 100px); font-weight: 700; }
+.notfound .content p { color: var(--muted); font-size: 16px; }
+.notfound .content .btn { width: fit-content; }
+
+/* Responsive layouts */
+@media (max-width: 1140px) {
+  .navbar { flex-wrap: wrap; }
+  .navbar .hamburger { display: flex; align-items: center; font-size: 25px; }
+  .navbar .links { order: 1; width: 100%; display: flex; flex-direction: column; align-items: flex-start; gap: 14px; padding-top: 12px; }
+  .navbar:not(.show_navbar) { height: 78px; overflow: hidden; }
+  .navbar.show_navbar { height: auto; overflow: visible; }
+}
+@media (max-width: 920px) {
+  .navbar { padding: 13px 20px; }
+  .navbar .links ul { gap: 16px; }
+  .jobs { padding: 35px 20px; }
+  .account { padding: 35px 20px; }
+  .jobs .wrapper .filter-bar { flex-basis: 210px; width: 210px; }
+  .jobs .container { width: calc(100% - 242px); }
+  .jobs .container .jobs_container { grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); }
+  .application_page { gap: 18px; }
+}
+@media (max-width: 830px) {
+  .authPage { min-height: calc(100vh - 78px); padding: 25px 16px; }
+  .authPage .container { max-width: 620px; padding: 28px 22px; }
+  .authPage .banner { display: none; }
+  .application_page { flex-direction: column-reverse; }
+  .application_page form, .application_page .job-details { width: 100%; }
+}
+@media (max-width: 730px) {
+  .jobs .wrapper { display: block; }
+  .jobs .wrapper .filter-bar { display: none; }
+  .jobs .container { width: 100%; }
+  .jobs .container .jobs_container { display: grid; grid-template-columns: 1fr; padding: 22px 0; }
+  .mobile-filter { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; }
+  .account .container { display: block; position: relative; }
+  .account .container .sidebar { position: absolute; top: 0; left: -110%; z-index: 5; width: min(300px, 85vw); height: 100%; transition: left .25s; }
+  .account .container .showSidebar { left: 0; background: var(--surface); }
+  .sidebar_icon { position: relative; bottom: auto; z-index: 6; display: flex; width: fit-content; padding: 8px; border-radius: 8px; background: var(--surface-2); color: var(--gold); }
+  .move_left, .move_right { left: 0; }
+  .move_right svg, .move_left svg { color: var(--gold); font-size: 25px; }
+  .account .component_header { align-items: flex-start; flex-direction: column; }
+}
+@media (max-width: 600px) {
+  .navbar .logo { gap: 9px; }
+  .navbar .logo h4 { font-size: 17px; }
+  .navbar .logo img { width: 112px; height: 63px; max-height: 63px; padding: 4px 6px; }
+  .navbar .links ul { width: 100%; align-items: flex-start; flex-direction: column; gap: 10px; }
+  .navbar .links ul:last-child { flex-direction: row; flex-wrap: wrap; }
+  .navbar.show_navbar { max-height: 470px; }
+  .hero { width: 100%; min-height: 500px; padding: 65px 20px; gap: 22px; }
+  .hero .box { padding: 22px; font-size: 14px; }
+  .services, .howItWorks { padding: 55px 18px; }
+  .services .grid, .howItWorks .container { grid-template-columns: 1fr; }
+  .authPage .container { padding: 24px 17px; }
+  .authPage .container form .wrapper { flex-direction: column; }
+  .jobs .search-tab-wrapper input { padding: 12px 105px 12px 12px; font-size: 14px; }
+  .jobs .search-tab-wrapper button { top: 6px; right: 6px; padding: 7px 12px; }
+  .account_components h3 { font-size: 22px; }
+  .account_components .applications_container .card { padding: 16px; }
+  .account_components .applications_container .card .btn-wrapper { justify-content: stretch; }
+  .account_components .applications_container .card .btn-wrapper .btn, .account_components .applications_container .card .btn-wrapper .black_btn { flex: 1; }
+  .chatting { width: calc(100% - 24px); padding: 25px 0; }
+  .chatting .container { min-height: 500px; }
+  .chatting .container .messages { min-height: 390px; padding: 15px; }
+  .application_page { width: calc(100% - 24px); padding: 22px 0; }
+  .application_page form, .application_page .job-details { padding: 20px 16px; }
+  footer { padding: 35px 22px 20px; }
+  footer div { width: 100%; flex: 1 1 100%; }
+  footer div:first-child { justify-content: flex-start; }
+  footer div img { width: 160px; }
+}
+
+/* Logo visibility: keep the logo on a clean white tile for contrast. */
+footer div img {
+  max-width: 190px;
+  padding: 8px 10px;
+  background: #ffffff;
+  border: 1px solid #dbe4f0;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.16);
+}
+@media (max-width: 600px) {
+  footer div img { width: 160px; }
+}
+@media (max-width: 410px) {
+  .btn, .black_btn, .outline_btn { min-width: 0; padding: 10px 14px; font-size: 13px; }
+  .jobs .search-tab-wrapper button { display: none; }
+  .jobs .search-tab-wrapper input { padding-right: 12px; }
+  .account { padding-inline: 14px; }
+  .account_components img { width: 170px; height: 170px; margin: 0 auto; }
+}
+
+
+/* Final polish: accessible light surfaces and consistent blue job-portal accents */
+body { background: var(--bg); color: var(--text); }
+::selection { background: #bfdbfe; color: #172b4d; }
+.navbar .links ul li a:hover, .navbar .logo h4 { color: #1d4ed8; }
+.services .grid .card, .howItWorks .container .card, .jobs .container .jobs_container .card, .account .container .sidebar, .application_page form, .application_page .job-details, .authPage .container, .chatting .container { background-color: #ffffff; }
+.authPage .container form .inputTag div, .account_components div input, .account_components div select, .account_components div textarea, .application_page form div input, .application_page form div textarea, .application_page form div select, .chatting .container form input { background-color: #f8fafc; color: #172033; }
+.authPage .container form .inputTag div input, .authPage .container form .inputTag div select, .authPage .container form .inputTag div textarea { color: #172033; }
+.authPage .container form .inputTag div select option, .account_components div select option { background: #ffffff; color: #172033; }
+.chatting .container .messages .receiver span { background: #dbeafe; color: #1e40af; }
+.chatting .container .messages .sender span { background: #f1f5f9; color: #334155; }
+footer { color: #eaf1fb; }
+footer div ul a, footer div ul { color: #cbd5e1; }
+footer div ul a:hover { color: #ffffff; }
+.copyright { background: #10213d; color: #cbd5e1; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; } }
+
+
+
+/* =====================================
+   PROFESSIONAL NAVBAR - BLUE & WHITE
+===================================== */
+
+.navbar {
+  min-height: 88px;
+  padding: 12px 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  border-bottom: 1px solid #e5eaf2;
+  box-shadow: 0 3px 15px rgba(15, 35, 65, 0.045);
+  position: relative;
+  z-index: 100;
+}
+
+.navbar .logo {
+  display: flex;
+  align-items: center;
+}
+
+.navbar .logo img {
+  width: 145px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 0;
+  box-shadow: none;
+  transition: transform 0.3s ease;
+}
+
+.navbar .logo img:hover {
+  transform: scale(1.04);
+}
+
+/* Navbar links */
+
+.navbar .links ul {
+  display: flex;
+  align-items: center;
+  gap: 42px;
+}
+
+.navbar .links ul li {
+  list-style: none;
+}
+
+.navbar .links ul li a {
+  position: relative;
+  display: inline-block;
+  padding: 12px 2px;
+  color: #52627a;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Animated underline */
+
+.navbar .links ul li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 4px;
+  width: 100%;
+  height: 2px;
+  background: #2563eb;
+  border-radius: 10px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.navbar .links ul li a:hover {
+  color: #2563eb;
+  transform: translateY(-2px);
+}
+
+.navbar .links ul li a:hover::after {
+  transform: scaleX(1);
+}
+
+/* Dashboard active link */
+.navbar .links ul li a.active {
+  color: #2563eb;
+}
+
+.navbar .links ul li a.active::after {
+  transform: scaleX(1);
+}
+
+/* =====================================
+   DASHBOARD
+===================================== */
+
+.account {
+  min-height: 100vh;
+  padding: 42px 7%;
+  background: #f3f6fb;
+}
+
+.account .component_header {
+  margin-bottom: 34px;
+}
+
+.account .component_header p {
+  color: #1e293b;
+  font-size: 19px;
+  font-weight: 600;
+}
+
+.account .component_header p:last-child span {
+  color: #2563eb;
+  font-weight: 600;
+}
+
+/* Dashboard sidebar */
+
+.account .container {
+  display: flex;
+  align-items: flex-start;
+  gap: 55px;
+}
+
+.account .container .sidebar {
+  min-width: 270px;
+  padding: 25px 22px;
+  background: #ffffff;
+  border: 1px solid #e4eaf3;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(20, 45, 80, 0.045);
+}
+
+.account .container .sidebar h4 {
+  color: #172b4d;
+  font-size: 21px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.account .container .sidebar .sidebar_links {
+  gap: 7px;
+}
+
+.account .container .sidebar .sidebar_links button {
+  width: 100%;
+  padding: 12px 14px;
+  text-align: left;
+  color: #64748b;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.account .container .sidebar .sidebar_links button:hover {
+  color: #2563eb;
+  background: #eff5ff;
+  padding-left: 20px;
+}
+
+.account .container .sidebar .sidebar_links .active {
+  color: #2563eb;
+  background: #eaf1ff;
+  font-weight: 600;
+}
+
+/* Dashboard content */
+
+.account_components {
+  flex: 1;
+  width: 100%;
+  max-width: 100%;
+  padding: 10px 0;
+  gap: 25px;
+}
+
+.account_components h3 {
+  color: #172b4d;
+  font-size: 27px;
+  font-weight: 700;
+}
+
+.account_components div:first-child {
+  color: #172b4d;
+}
+
+/* Profile form fields */
+
+.account_components div input,
+.account_components div select,
+.account_components div textarea {
+  width: 100%;
+  padding: 13px 15px;
+  color: #26364d;
+  background: #ffffff;
+  border: 1px solid #dce4ef;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color 0.25s ease,
+              box-shadow 0.25s ease;
+}
+
+.account_components div input:focus,
+.account_components div select:focus,
+.account_components div textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.10);
+}
+
+.account_components .view-resume {
+  background: #2563eb;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: all 0.25s ease;
+}
+
+.account_components .view-resume:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+}
+
+/* Responsive navbar and dashboard */
+
+@media (max-width: 1140px) {
+  .navbar {
+    padding: 15px 5%;
+  }
+
+  .navbar .links ul {
+    gap: 22px;
+  }
+
+  .account {
+    padding: 30px 5%;
+  }
+
+  .account .container {
+    gap: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    min-height: 75px;
+  }
+
+  .navbar .logo img {
+    width: 115px;
+  }
+
+  .navbar .links ul {
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .account .component_header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .account .container {
+    flex-direction: column;
+  }
+
+  .account .container .sidebar {
+    width: 100%;
+  }
+
+  .account_components {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar *,
+  .account * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+
+
+/* Remove sidebar bullet points */
+.account .container .sidebar ul,
+.account .container .sidebar ol {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.account .container .sidebar li {
+  list-style: none !important;
+  list-style-type: none !important;
+  padding: 0;
+  margin: 0;
+}
+
+.account .container .sidebar li::marker {
+  content: "" !important;
+}
+
+.account .container .sidebar li::before {
+  content: none !important;
+}
+
+
+
+/* ===== Navbar Logo Improvement ===== */
+
+.navbar {
+  min-height: 90px;
+  padding: 10px 7%;
+  background: #ffffff;
+  border-bottom: 1px solid #e8edf5;
+}
+
+/* Remove logo wrapper box */
+.navbar .logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none !important;
+  outline: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
+
+/* Increase logo size */
+.navbar .logo img {
+  display: block;
+  width: 190px !important;
+  height: 75px !important;
+  max-width: 100%;
+  object-fit: contain;
+  border: none !important;
+  outline: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  transition: transform 0.3s ease;
+}
+
+.navbar .logo img:hover {
+  transform: scale(1.04);
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    min-height: 75px;
+    padding: 10px 4%;
+  }
+
+  .navbar .logo img {
+    width: 145px !important;
+    height: 60px !important;
+  }
+}
+
+
+/* Hero Heading - Professional Blue */
+
+.hero h1 {
+  color: #2563EB !important;
+  background: linear-gradient(
+    90deg,
+    #1D4ED8,
+    #3B82F6,
+    #0EA5E9
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  font-weight: 800;
+  letter-spacing: -1px;
+}

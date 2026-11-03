@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 import {
   FaSquareXTwitter,
   FaSquareInstagram,
@@ -9,18 +10,18 @@ import {
 } from "react-icons/fa6";
 
 const Footer = () => {
-  const { isAuthenticated } = useSelector((state) => state.user);
+  const { isAuthenticated, user } = useContext(AuthContext);
   return (
     <>
       <footer>
         <div>
-          <img src="/logo.png" alt="logo" />
+          <img src="/image.png" alt="logo" />
         </div>
         <div>
           <h4>Contact</h4>
           <ul>
             <li>Street No.512 Sector-7 HSR Layout, Bangalore</li>
-            <li>nichenest@gmail.com</li>
+            <li>jobportal@gmail.com</li>
             <li>+91 9106507521</li>
           </ul>
         </div>
